@@ -1,0 +1,43 @@
+{
+  "version": "2.0",
+  "resources": [
+    {
+      "resource": "Connection",
+      "key": "9275b8af-6494-4db6-b612-2f1ab9e82d55",
+      "activityId": "SendEmail1",
+      "activityDisplayName": "Send LoanShield Gmail notification",
+      "value": {
+        "ConnectionId": {
+          "defaultValue": "9275b8af-6494-4db6-b612-2f1ab9e82d55",
+          "isExpression": false
+        }
+      },
+      "metadata": {
+        "UseConnectionService": "true",
+        "Connector": "uipath-google-gmail",
+        "ActivityName": "Send LoanShield Gmail notification",
+        "BindingsVersion": "2.2",
+        "SolutionsSupport": "true"
+      }
+    },
+    {
+      "resource": "Connection",
+      "key": "8218fa99-7480-4a71-8499-a5e5f8d592e3",
+      "activityId": "WriteRow1",
+      "activityDisplayName": "Write LoanShield stage audit row",
+      "value": {
+        "ConnectionId": {
+          "defaultValue": "8218fa99-7480-4a71-8499-a5e5f8d592e3",
+          "isExpression": false
+        }
+      },
+      "metadata": {
+        "UseConnectionService": "true",
+        "Connector": "uipath-google-sheets",
+        "ActivityName": "Write LoanShield stage audit row",
+        "BindingsVersion": "2.2",
+        "SolutionsSupport": "true"
+      }
+    }
+  ]
+}

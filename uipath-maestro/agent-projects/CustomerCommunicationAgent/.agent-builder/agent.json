@@ -1,0 +1,86 @@
+{
+  "id": "2f4ed003-4431-42bc-b486-06ac9d3594ee",
+  "version": "1.1.0",
+  "name": "CustomerCommunicationAgent",
+  "metadata": {
+    "storageVersion": "50.0.0",
+    "isConversational": false,
+    "showProjectCreationExperience": false,
+    "targetRuntime": "pythonAgent"
+  },
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the LoanShield Maestro customer communication agent. Draft clear, supportive, professional customer communication using only approved synthetic case facts. Flag denial, partial approval, vulnerable customer, or compliance-sensitive messages for human approval. Return structured JSON that matches the configured output schema. Do not invent real personal, bank, payment, or loan data. Use only synthetic/demo values present in caseJson or clearly marked demo assumptions.",
+      "contentTokens": [
+        {
+          "type": "simpleText",
+          "rawString": "You are the LoanShield Maestro customer communication agent. Draft clear, supportive, professional customer communication using only approved synthetic case facts. Flag denial, partial approval, vulnerable customer, or compliance-sensitive messages for human approval. Return structured JSON that matches the configured output schema. Do not invent real personal, bank, payment, or loan data. Use only synthetic/demo values present in caseJson or clearly marked demo assumptions."
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "Case JSON: {{input.caseJson}}",
+      "contentTokens": [
+        {
+          "type": "simpleText",
+          "rawString": "Case JSON: "
+        },
+        {
+          "type": "variable",
+          "rawString": "input.caseJson"
+        }
+      ]
+    }
+  ],
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "caseJson": {
+        "type": "object",
+        "description": "Canonical LoanShield case, webhook, context, evidence, policy, investigation, decision, and callback state."
+      }
+    },
+    "required": [
+      "caseJson"
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "subject": {
+        "type": "string",
+        "description": "Draft message subject"
+      },
+      "body": {
+        "type": "string",
+        "description": "Draft message body"
+      },
+      "tone": {
+        "type": "string",
+        "description": "Communication tone"
+      },
+      "requiresHumanApprovalBeforeSend": {
+        "type": "boolean",
+        "description": "True when message requires human approval"
+      },
+      "confidence": {
+        "type": "number",
+        "description": "Draft confidence from 0 to 1"
+      }
+    }
+  },
+  "settings": {
+    "model": "gpt-4.1-2025-04-14",
+    "maxTokens": 16384,
+    "temperature": 0,
+    "engine": "basic-v2",
+    "maxIterations": 25,
+    "mode": "standard"
+  },
+  "type": "lowCode",
+  "projectId": "2f4ed003-4431-42bc-b486-06ac9d3594ee",
+  "resources": [],
+  "features": []
+}

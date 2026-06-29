@@ -1,0 +1,6 @@
+{
+    "ProjectType":  "Api",
+    "Name":  "Audit_WriteCaseEvent",
+    "Description":  "Normalizes case audit events for callbacks and case record summaries.",
+    "MainFile":  "Workflow.json"
+}

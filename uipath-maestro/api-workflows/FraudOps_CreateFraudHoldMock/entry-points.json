@@ -1,0 +1,42 @@
+{
+    "$schema":  "https://cloud.uipath.com/draft/2024-12/entry-point",
+    "$id":  "entry-points.json",
+    "entryPoints":  [
+                        {
+                            "filePath":  "content/Workflow.json",
+                            "uniqueId":  "b56a8dfe-1248-48e9-a2a5-fedec12c70d0",
+                            "type":  "api",
+                            "input":  {
+                                          "type":  "object",
+                                          "properties":  {
+                                                             "externalCaseKey":  {
+                                                                                     "type":  "string"
+                                                                                 },
+                                                             "fraudRiskScore":  {
+                                                                                    "type":  "number"
+                                                                                },
+                                                             "fraudIndicators":  {
+                                                                                     "type":  "array"
+                                                                                 }
+                                                         },
+                                          "title":  "Inputs"
+                                      },
+                            "output":  {
+                                           "type":  "object",
+                                           "properties":  {
+                                                              "fraudHoldStatus":  {
+                                                                                      "type":  "string"
+                                                                                  },
+                                                              "holdReference":  {
+                                                                                    "type":  "string"
+                                                                                },
+                                                              "requiresComplianceReferral":  {
+                                                                                                 "type":  "boolean"
+                                                                                             }
+                                                          },
+                                           "title":  "Outputs"
+                                       },
+                            "displayName":  "FraudOps_CreateFraudHoldMock"
+                        }
+                    ]
+}

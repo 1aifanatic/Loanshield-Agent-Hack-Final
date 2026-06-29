@@ -1,0 +1,48 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "$id": "entry-points.json",
+  "entryPoints": [
+    {
+      "filePath": "/content/agent.json",
+      "uniqueId": "e0c0b27c-e3c1-4943-9735-a5a01e4b0a03",
+      "type": "agent",
+      "input": {
+        "type": "object",
+        "properties": {
+          "caseJson": {
+            "type": "object",
+            "description": "Canonical LoanShield case, webhook, context, evidence, policy, investigation, decision, and callback state."
+          }
+        },
+        "required": [
+          "caseJson"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "recommendedDecision": {
+            "type": "string",
+            "description": "approve, partial_approve, deny, request_more_evidence, or escalate"
+          },
+          "decisionRationale": {
+            "type": "string",
+            "description": "Rationale for human reviewer"
+          },
+          "recommendedAmount": {
+            "type": "number",
+            "description": "Recommended approved amount"
+          },
+          "approvalChecklist": {
+            "type": "array",
+            "description": "Checklist for human approval"
+          },
+          "customerImpact": {
+            "type": "string",
+            "description": "Customer-facing impact summary"
+          }
+        }
+      }
+    }
+  ]
+}

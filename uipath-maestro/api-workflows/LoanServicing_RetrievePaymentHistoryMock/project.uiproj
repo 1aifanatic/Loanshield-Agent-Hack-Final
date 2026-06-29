@@ -1,0 +1,6 @@
+{
+    "ProjectType":  "Api",
+    "Name":  "LoanServicing_RetrievePaymentHistoryMock",
+    "Description":  "Returns synthetic payment history for a disputed loan transaction.",
+    "MainFile":  "Workflow.json"
+}

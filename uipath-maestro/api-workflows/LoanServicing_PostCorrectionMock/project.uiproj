@@ -1,0 +1,6 @@
+{
+    "ProjectType":  "Api",
+    "Name":  "LoanServicing_PostCorrectionMock",
+    "Description":  "Simulates refund, fee waiver, payment reallocation, or escrow correction posting.",
+    "MainFile":  "Workflow.json"
+}

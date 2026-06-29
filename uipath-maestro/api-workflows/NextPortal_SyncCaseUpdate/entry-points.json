@@ -1,0 +1,44 @@
+{
+    "$schema":  "https://cloud.uipath.com/draft/2024-12/entry-point",
+    "$id":  "entry-points.json",
+    "entryPoints":  [
+                        {
+                            "filePath":  "content/Workflow.json",
+                            "uniqueId":  "13c37f4d-1ad7-443a-a437-3e4a2cfb1678",
+                            "type":  "api",
+                            "input":  {
+                                          "type":  "object",
+                                          "properties":  {
+                                                             "caseUpdatesUrl":  {
+                                                                                    "type":  "string"
+                                                                                },
+                                                             "callbackKey":  {
+                                                                                 "type":  "string"
+                                                                             },
+                                                             "updatePayload":  {
+                                                                                   "type":  "object"
+                                                                               }
+                                                         },
+                                          "required":  [
+                                                           "caseUpdatesUrl",
+                                                           "callbackKey",
+                                                           "updatePayload"
+                                                       ],
+                                          "title":  "Inputs"
+                                      },
+                            "output":  {
+                                           "type":  "object",
+                                           "properties":  {
+                                                              "callbackStatus":  {
+                                                                                     "type":  "string"
+                                                                                 },
+                                                              "portalResponse":  {
+                                                                                     "type":  "object"
+                                                                                 }
+                                                          },
+                                           "title":  "Outputs"
+                                       },
+                            "displayName":  "NextPortal_SyncCaseUpdate"
+                        }
+                    ]
+}

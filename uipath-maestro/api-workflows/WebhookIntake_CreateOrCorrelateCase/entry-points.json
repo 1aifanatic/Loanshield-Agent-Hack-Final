@@ -1,0 +1,54 @@
+{
+    "$schema":  "https://cloud.uipath.com/draft/2024-12/entry-point",
+    "$id":  "entry-points.json",
+    "entryPoints":  [
+                        {
+                            "filePath":  "content/Workflow.json",
+                            "uniqueId":  "e2b44ec0-ec46-4fd4-84c1-62761d3c8f57",
+                            "type":  "api",
+                            "input":  {
+                                          "type":  "object",
+                                          "properties":  {
+                                                             "webhookPayload":  {
+                                                                                    "type":  "object"
+                                                                                }
+                                                         },
+                                          "required":  [
+                                                           "webhookPayload"
+                                                       ],
+                                          "title":  "Inputs"
+                                      },
+                            "output":  {
+                                           "type":  "object",
+                                           "properties":  {
+                                                              "isValid":  {
+                                                                              "type":  "boolean"
+                                                                          },
+                                                              "externalCaseKey":  {
+                                                                                      "type":  "string"
+                                                                                  },
+                                                              "externalDisputeId":  {
+                                                                                        "type":  "string"
+                                                                                    },
+                                                              "eventType":  {
+                                                                                "type":  "string"
+                                                                            },
+                                                              "caseType":  {
+                                                                               "type":  "string"
+                                                                           },
+                                                              "correlationId":  {
+                                                                                    "type":  "string"
+                                                                                },
+                                                              "validationErrors":  {
+                                                                                       "type":  "array"
+                                                                                   },
+                                                              "callback":  {
+                                                                               "type":  "object"
+                                                                           }
+                                                          },
+                                           "title":  "Outputs"
+                                       },
+                            "displayName":  "WebhookIntake_CreateOrCorrelateCase"
+                        }
+                    ]
+}

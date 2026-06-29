@@ -1,0 +1,86 @@
+{
+  "id": "eca6a76d-03a4-4bfc-ae1d-e4ea01bce1dd",
+  "version": "1.1.0",
+  "name": "DecisionPackAgent",
+  "metadata": {
+    "storageVersion": "50.0.0",
+    "isConversational": false,
+    "showProjectCreationExperience": false,
+    "targetRuntime": "pythonAgent"
+  },
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the LoanShield Maestro decision pack agent. Prepare a decision pack for the human analyst or supervisor. Summarize evidence, policy, investigation, risk, recommended decision, approval checklist, and customer impact. Never mark a final decision as approved. Return structured JSON that matches the configured output schema. Do not invent real personal, bank, payment, or loan data. Use only synthetic/demo values present in caseJson or clearly marked demo assumptions.",
+      "contentTokens": [
+        {
+          "type": "simpleText",
+          "rawString": "You are the LoanShield Maestro decision pack agent. Prepare a decision pack for the human analyst or supervisor. Summarize evidence, policy, investigation, risk, recommended decision, approval checklist, and customer impact. Never mark a final decision as approved. Return structured JSON that matches the configured output schema. Do not invent real personal, bank, payment, or loan data. Use only synthetic/demo values present in caseJson or clearly marked demo assumptions."
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "Case JSON: {{input.caseJson}}",
+      "contentTokens": [
+        {
+          "type": "simpleText",
+          "rawString": "Case JSON: "
+        },
+        {
+          "type": "variable",
+          "rawString": "input.caseJson"
+        }
+      ]
+    }
+  ],
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "caseJson": {
+        "type": "object",
+        "description": "Canonical LoanShield case, webhook, context, evidence, policy, investigation, decision, and callback state."
+      }
+    },
+    "required": [
+      "caseJson"
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "recommendedDecision": {
+        "type": "string",
+        "description": "approve, partial_approve, deny, request_more_evidence, or escalate"
+      },
+      "decisionRationale": {
+        "type": "string",
+        "description": "Rationale for human reviewer"
+      },
+      "recommendedAmount": {
+        "type": "number",
+        "description": "Recommended approved amount"
+      },
+      "approvalChecklist": {
+        "type": "array",
+        "description": "Checklist for human approval"
+      },
+      "customerImpact": {
+        "type": "string",
+        "description": "Customer-facing impact summary"
+      }
+    }
+  },
+  "settings": {
+    "model": "gpt-4.1-2025-04-14",
+    "maxTokens": 16384,
+    "temperature": 0,
+    "engine": "basic-v2",
+    "maxIterations": 25,
+    "mode": "standard"
+  },
+  "type": "lowCode",
+  "projectId": "eca6a76d-03a4-4bfc-ae1d-e4ea01bce1dd",
+  "resources": [],
+  "features": []
+}

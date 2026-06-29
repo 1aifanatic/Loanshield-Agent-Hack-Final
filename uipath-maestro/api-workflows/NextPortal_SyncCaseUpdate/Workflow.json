@@ -1,0 +1,345 @@
+{
+  "document": {
+    "dsl": "1.0.0",
+    "name": "NextPortal_SyncCaseUpdate",
+    "version": "0.0.4",
+    "namespace": "loanshield",
+    "metadata": {
+      "variables": {
+        "schema": {
+          "format": "json",
+          "document": {
+            "type": "object",
+            "properties": {
+              "notificationWarning": {
+                "type": "string",
+                "default": ""
+              }
+            },
+            "title": "Variables"
+          }
+        }
+      }
+    }
+  },
+  "input": {
+    "schema": {
+      "format": "json",
+      "document": {
+        "type": "object",
+        "properties": {
+          "caseUpdatesUrl": {
+            "type": "string"
+          },
+          "callbackKey": {
+            "type": "string"
+          },
+          "updatePayload": {
+            "type": "object"
+          },
+          "caseContextUrl": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "caseUpdatesUrl",
+          "callbackKey",
+          "updatePayload"
+        ],
+        "title": "Inputs"
+      }
+    }
+  },
+  "output": {
+    "schema": {
+      "format": "json",
+      "document": {
+        "type": "object",
+        "properties": {
+          "callbackStatus": {
+            "type": "string"
+          },
+          "httpStatus": {
+            "type": "number"
+          },
+          "accepted": {
+            "type": "boolean"
+          },
+          "gmailNotification": {
+            "type": "object"
+          },
+          "sheetAudit": {
+            "type": "object"
+          },
+          "notificationWarning": {
+            "type": "string"
+          },
+          "portalResponse": {
+            "type": "object"
+          }
+        },
+        "title": "Outputs"
+      }
+    }
+  },
+  "do": [
+    {
+      "Sequence_1": {
+        "do": [
+          {
+            "WorkflowStart": {
+              "set": "${Object.entries($workflow.definition?.document?.metadata?.variables?.schema?.document?.properties || {}).reduce((acc, [name, def]) => ({ ...acc, [name]: def?.default }), {}) }",
+              "output": {
+                "as": "${$input}"
+              },
+              "export": {
+                "as": "{ ...$context, variables: { ...$context.variables, ...$output } }"
+              },
+              "metadata": {
+                "activityType": "Assign",
+                "displayName": "Workflow start",
+                "fullName": "Assign",
+                "isTransparent": true
+              }
+            }
+          },
+          {
+            "HttpRequest_1": {
+              "call": "UiPath.Http",
+              "with": {
+                "connector": "uipath-uipath-http",
+                "connectionId": "ImplicitConnection",
+                "connectionResourceId": "ImplicitConnection",
+                "method": "POST",
+                "endpoint": "/http-request",
+                "bodyParameters": {
+                  "authentication": "manual",
+                  "method": "POST",
+                  "url": "${$workflow.input.caseUpdatesUrl}",
+                  "headers": {
+                    "content-type": "application/json",
+                    "x-uipath-callback-key": "${$workflow.input.callbackKey}"
+                  },
+                  "body": "${$workflow.input.updatePayload}"
+                }
+              },
+              "export": {
+                "as": "{ ...$context, outputs: { ...$context?.outputs, \"http_request_1\": $output } }"
+              },
+              "metadata": {
+                "fullName": "Connector",
+                "activityType": "Connector",
+                "displayName": "POST LoanShield case update",
+                "uiPathActivityTypeId": "5c4cc855-b42a-37e6-b910-de8588998fce",
+                "assemblyQualifiedName": "Connector",
+                "configuration": "{\"essentialConfiguration\":{\"connectorVersion\":\"\",\"executionType\":null,\"customFieldsRequestDetails\":null,\"instanceParameters\":{\"version\":\"1.0.0\",\"connectorKey\":\"uipath-uipath-http\",\"activityType\":\"Curated\",\"objectName\":\"http-request\",\"httpMethod\":\"POST\",\"operation\":null,\"eventOperation\":null,\"eventMode\":null,\"connectorObjects\":null,\"previewEndpoint\":null},\"objectName\":\"http-request\",\"operation\":null,\"packageVersion\":\"1.0.0\",\"httpMethod\":\"POST\",\"path\":\"/http-request\",\"unifiedTypesCompatible\":true,\"savedJitInputFieldId\":\"in_http-request\"}}"
+              }
+            }
+          },
+          {
+            "HttpRequest_Context": {
+              "call": "UiPath.Http",
+              "with": {
+                "connector": "uipath-uipath-http",
+                "connectionId": "ImplicitConnection",
+                "connectionResourceId": "ImplicitConnection",
+                "method": "GET",
+                "endpoint": "/http-request",
+                "bodyParameters": {
+                  "authentication": "manual",
+                  "method": "GET",
+                  "url": "${(($workflow.input.caseContextUrl || ($workflow.input.caseUpdatesUrl || '').replace('/api/uipath/case-updates','/api/uipath/case-context')) || 'https://agenthack-loandispute.vercel.app/api/uipath/case-context') + '?externalCaseKey=' + encodeURIComponent(($workflow.input.updatePayload || {}).externalCaseKey || ('LoanShieldDemoPortal:' + (($workflow.input.updatePayload || {}).externalDisputeId || 'demo')))}",
+                  "headers": {
+                    "x-uipath-callback-key": "${$workflow.input.callbackKey}"
+                  }
+                }
+              },
+              "export": {
+                "as": "{ ...$context, outputs: { ...$context?.outputs, \"http_request_context\": $output } }"
+              },
+              "metadata": {
+                "fullName": "Connector",
+                "activityType": "Connector",
+                "displayName": "GET LoanShield case context",
+                "uiPathActivityTypeId": "5c4cc855-b42a-37e6-b910-de8588998fce",
+                "assemblyQualifiedName": "Connector",
+                "configuration": "{\"essentialConfiguration\":{\"connectorVersion\":\"\",\"executionType\":null,\"customFieldsRequestDetails\":null,\"instanceParameters\":{\"version\":\"1.0.0\",\"connectorKey\":\"uipath-uipath-http\",\"activityType\":\"Curated\",\"objectName\":\"http-request\",\"httpMethod\":\"GET\",\"operation\":null,\"eventOperation\":null,\"eventMode\":null,\"connectorObjects\":null,\"previewEndpoint\":null},\"objectName\":\"http-request\",\"operation\":null,\"packageVersion\":\"1.0.0\",\"httpMethod\":\"GET\",\"path\":\"/http-request\",\"unifiedTypesCompatible\":true,\"savedJitInputFieldId\":\"in_http-request\"}}"
+              }
+            }
+          },
+          {
+            "Try_Catch_Notifications": {
+              "try": [
+                {
+                  "Javascript_EmailContent": {
+                    "run": {
+                      "script": {
+                        "code": "const payload = $workflow.input.updatePayload || {};\nconst summary = payload.summaryPatch || {};\nconst details = payload.payload || {};\nconst contextResponse = $context.outputs.http_request_context || {};\nconst readJson = (response) => {\n  let content = response.content ?? response.body ?? null;\n  if (typeof content === 'string') {\n    try { content = JSON.parse(content); } catch (_) {}\n  }\n  if (content && typeof content === 'object') return content;\n  if (response.rawStringBody) {\n    try { return JSON.parse(response.rawStringBody); } catch (_) { return { rawStringBody: response.rawStringBody }; }\n  }\n  return {};\n};\nconst contextEnvelope = readJson(contextResponse);\nconst caseContext = contextEnvelope.data || contextEnvelope || {};\nconst dispute = caseContext.dispute || {};\nconst events = Array.isArray(caseContext.events) ? caseContext.events : [];\nconst evidence = Array.isArray(caseContext.evidence) ? caseContext.evidence : [];\nconst decisions = Array.isArray(caseContext.decisions) ? caseContext.decisions : [];\nconst stage = payload.stage || summary.currentStage || dispute.currentStage || 'Case update';\nconst status = payload.status || summary.status || dispute.status || 'completed';\nconst eventType = payload.eventType || 'case.updated';\nconst disputeId = payload.externalDisputeId || dispute.externalDisputeId || 'demo';\nconst caseKey = payload.externalCaseKey || dispute.externalCaseKey || ('LoanShieldDemoPortal:' + disputeId);\nconst title = payload.title || (stage + ' update');\nconst actor = payload.actorName || 'LoanShield Maestro';\nconst source = payload.source || 'UiPath Maestro Case';\nconst correlationId = payload.correlationId || 'n/a';\nconst eventId = payload.eventId || 'n/a';\nconst portalClosed = dispute.status === 'closed' || dispute.currentStage === 'Closure' || payload.eventType === 'case.closed';\nconst effectiveStage = portalClosed ? 'Closure' : stage;\nconst effectiveStatus = portalClosed ? 'completed' : status;\nconst effectiveEventType = portalClosed ? 'case.closed' : eventType;\nconst portalUrl = 'https://agenthack-loandispute.vercel.app/disputes/' + encodeURIComponent(disputeId);\nconst esc = (v) => String(v ?? '').replace(/[&<>\\\"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '\\\"': '&quot;' }[c]));\nconst jsonPreview = (obj, limit = 4000) => { let text = ''; try { text = JSON.stringify(obj || {}, null, 2); } catch (_) { text = String(obj || ''); } return text.length > limit ? text.slice(0, limit) + '\\n... truncated ...' : text; };\nconst money = (v, currency = dispute.currency || details.currency || 'USD') => (v === undefined || v === null || v === '') ? '' : new Intl.NumberFormat('en-US', { style: 'currency', currency }).format(Number(v));\nconst when = (v) => { if (!v) return ''; const d = new Date(v); return Number.isNaN(d.getTime()) ? String(v) : d.toLocaleString('en-US', { timeZone: 'America/Chicago', dateStyle: 'medium', timeStyle: 'short' }) + ' CT'; };\nconst row = (label, value) => (value !== undefined && value !== null && value !== '') ? '<tr><td style=\"padding:9px 12px;color:#475569;font-weight:700;border-bottom:1px solid #e2e8f0;width:34%;\">' + esc(label) + '</td><td style=\"padding:9px 12px;color:#0f172a;border-bottom:1px solid #e2e8f0;\">' + esc(value) + '</td></tr>' : '';\nconst section = (heading, inner) => '<div style=\"margin-top:22px;\"><h2 style=\"font-size:17px;line-height:1.25;margin:0 0 10px;color:#0f172a;\">' + esc(heading) + '</h2>' + inner + '</div>';\nconst card = (inner) => '<div style=\"border:1px solid #dbe5ef;border-radius:8px;background:#ffffff;overflow:hidden;\">' + inner + '</div>';\nconst table = (rows) => '<table role=\"presentation\" cellspacing=\"0\" cellpadding=\"0\" style=\"width:100%;border-collapse:collapse;\">' + rows + '</table>';\nconst firstPortalEvent = events.slice().reverse().find((e) => e.eventType === 'portal.dispute.created') || {};\nconst triggerInfo = (firstPortalEvent.payload && (firstPortalEvent.payload.input || firstPortalEvent.payload.trigger || firstPortalEvent.payload)) || details.trigger || details.webhook || details || {};\nconst triggerRows = row('Trigger event type', triggerInfo.eventType || dispute.eventType || eventType) + row('Scenario', triggerInfo.scenarioKey) + row('Customer', triggerInfo.customerName || dispute.customerName) + row('Customer segment', triggerInfo.customerSegment || dispute.customerSegment) + row('Loan type', triggerInfo.loanType || dispute.loanType) + row('Loan ID', triggerInfo.loanIdMasked || dispute.loanIdMasked) + row('Transaction ID', triggerInfo.transactionId || dispute.transactionId) + row('Dispute type', triggerInfo.disputeType || dispute.disputeType) + row('Disputed amount', money(triggerInfo.disputedAmount ?? dispute.disputedAmount)) + row('Priority', triggerInfo.priority || dispute.priority) + row('Evidence supplied', triggerInfo.hasEvidence === true ? 'Yes' : triggerInfo.hasEvidence === false ? 'No' : '') + row('Narrative', triggerInfo.narrative || dispute.narrative);\nconst order = ['Webhook Intake', 'Loan Context', 'Policy Triage', 'Evidence Collection', 'Investigation', 'Human Decision', 'Settlement', 'Closure'];\nconst norm = (s) => { const text = String(s || '').toLowerCase(); if (text.includes('context')) return 'Loan Context'; if (text.includes('policy') || text.includes('triage')) return 'Policy Triage'; if (text.includes('evidence')) return 'Evidence Collection'; if (text.includes('investigation') || text.includes('fraud') || text.includes('servicing')) return 'Investigation'; if (text.includes('decision') || text.includes('human')) return 'Human Decision'; if (text.includes('settlement') || text.includes('correction')) return 'Settlement'; if (text.includes('closure') || text.includes('communication')) return 'Closure'; if (text.includes('intake') || text.includes('webhook') || text.includes('demo')) return 'Webhook Intake'; return s || 'Update'; };\nconst stageDescriptions = { 'Webhook Intake': 'Webhook payload was received, authenticated, and correlated to the external LoanShield dispute.', 'Loan Context': 'Loan and customer context were retrieved so the case could be evaluated against the correct account and transaction.', 'Policy Triage': 'Policy triage classified the dispute path and selected the servicing correction route for the duplicate autopay scenario.', 'Evidence Collection': 'Evidence was checked for sufficiency, including statement or receipt support for the duplicate debit claim.', 'Investigation': 'Servicing and fraud checks were completed to rule out fraud hold handling and confirm the payment correction path.', 'Human Decision': 'The decision step approved the customer remediation path and allowed settlement to proceed.', 'Settlement': 'The correction and settlement step posted the clearing action for the disputed debit.', 'Closure': 'Closure communication and audit QA completed; the portal case is marked closed.' };\nconst orderedEvents = events.slice().sort((a, b) => new Date(a.createdAt || 0) - new Date(b.createdAt || 0));\nconst latestByStage = new Map();\nfor (const e of orderedEvents) latestByStage.set(norm(e.stage || e.title || e.eventType), e);\nconst stageTimeline = order.map((name) => ({ name, event: latestByStage.get(name) })).filter((item) => item.event);\nconst timelineRows = stageTimeline.map(({ name, event }) => '<tr><td style=\"padding:10px 12px;border-bottom:1px solid #e2e8f0;vertical-align:top;\"><div style=\"font-weight:700;color:#0f172a;\">' + esc(name) + '</div><div style=\"font-size:12px;color:#64748b;margin-top:2px;\">' + esc(when(event.createdAt)) + '</div></td><td style=\"padding:10px 12px;border-bottom:1px solid #e2e8f0;vertical-align:top;\"><div style=\"font-weight:700;color:#166534;\">' + esc(event.status || 'completed') + '</div><div style=\"font-size:13px;color:#475569;margin-top:3px;\">' + esc(stageDescriptions[name] || event.description || event.title || event.eventType) + '</div></td></tr>').join('');\nconst evidenceHtml = evidence.length ? evidence.slice(0, 5).map((item) => '<li style=\"margin:0 0 8px;\"><strong>' + esc(item.fileName || item.documentType || item.evidenceId) + '</strong> - ' + esc(item.description || item.validationStatus || 'Evidence item recorded') + '</li>').join('') : '<li style=\"margin:0;\">No evidence records were returned by the portal context endpoint.</li>';\nconst decisionHtml = decisions.length ? decisions.slice(0, 5).map((item) => '<li style=\"margin:0 0 8px;\"><strong>' + esc(item.recommendedOutcome || item.decisionType || 'Decision') + '</strong> - ' + esc(item.decisionRationale || item.recommendationRationale || item.decidedBy || 'Decision record captured') + '</li>').join('') : '<li style=\"margin:0;\">No separate decision records were returned; decision status is reflected in the stage timeline.</li>';\nconst currentRows = row('Dispute ID', disputeId) + row('External case key', caseKey) + row('Current event type', effectiveEventType) + row('Current stage', effectiveStage) + row('Current status', effectiveStatus) + row('Source', source) + row('Actor', actor) + row('Correlation ID', correlationId) + row('Event ID', eventId) + row('Portal status', dispute.status) + row('Portal current stage', dispute.currentStage) + row('Recommended outcome', summary.recommendedOutcome || details.recommendedOutcome || dispute.recommendedOutcome) + row('Final outcome', summary.finalOutcome || details.finalOutcome || dispute.finalOutcome) + row('Approved amount', money(summary.approvedAmount ?? details.approvedAmount ?? dispute.approvedAmount));\nconst isClosure = /closure/i.test(effectiveStage) || effectiveEventType === 'case.closed' || effectiveStatus === 'closed' || dispute.status === 'closed';\nconst approvedAmount = summary.approvedAmount ?? details.approvedAmount ?? dispute.approvedAmount ?? triggerInfo.disputedAmount ?? dispute.disputedAmount;\nconst closureCopy = isClosure ? '<p style=\"margin:0 0 12px;color:#334155;line-height:1.55;\">The dispute has been cleared and the case is closed. The run received the original LoanShield trigger, correlated it to the portal dispute, retrieved loan context, completed policy triage, confirmed available evidence, ran investigation checks, approved the remediation path, posted the settlement/correction step, and completed closure communication.</p><p style=\"margin:0;color:#334155;line-height:1.55;\">Clearance summary: the duplicate autopay scenario was validated against the customer narrative and supporting evidence. The transaction ' + esc(triggerInfo.transactionId || dispute.transactionId || 'n/a') + ' for ' + esc(money(triggerInfo.disputedAmount ?? dispute.disputedAmount)) + ' was handled through the servicing correction path. The approved clearing amount recorded for closure is ' + esc(money(approvedAmount)) + ', and the portal now shows status ' + esc(dispute.status || status) + ' at stage ' + esc(dispute.currentStage || effectiveStage) + '.</p>' : '<p style=\"margin:0;color:#334155;line-height:1.55;\">This is an in-flight stage notification. The sections below show the trigger/update received by UiPath and the stage history available so far.</p>';\nconst subject = isClosure ? 'LoanShield Closure Cleared: ' + disputeId : 'LoanShield ' + effectiveStage + ': ' + effectiveStatus + ' - ' + disputeId;\nconst body = '<!doctype html><html><body style=\"margin:0;background:#f4f7fb;font-family:Arial,Helvetica,sans-serif;color:#0f172a;\"><div style=\"max-width:760px;margin:0 auto;padding:24px;\"><div style=\"background:#ffffff;border:1px solid #dbe5ef;border-radius:8px;overflow:hidden;\"><div style=\"background:#0f766e;color:white;padding:22px 24px;\"><div style=\"font-size:12px;letter-spacing:.08em;text-transform:uppercase;opacity:.85;\">LoanShield Maestro case notification</div><h1 style=\"margin:8px 0 0;font-size:24px;line-height:1.25;\">' + esc(title) + '</h1><p style=\"margin:8px 0 0;color:#d9fffb;font-size:14px;\">' + esc(dispute.customerName || triggerInfo.customerName || 'LoanShield customer') + ' | ' + esc(disputeId) + '</p></div><div style=\"padding:22px 24px;\">' + section(isClosure ? 'Detailed Closure Summary' : 'Stage Summary', closureCopy) + section('Current UiPath Update', card(table(currentRows))) + section('Original Trigger Information', card(table(triggerRows) + '<div style=\"padding:12px;background:#f8fafc;border-top:1px solid #e2e8f0;\"><div style=\"font-size:12px;font-weight:700;color:#475569;margin-bottom:6px;\">Raw trigger/update payload</div><pre style=\"white-space:pre-wrap;margin:0;font-size:12px;line-height:1.45;color:#0f172a;\">' + esc(jsonPreview({ originalPortalTrigger: triggerInfo, currentUiPathUpdate: payload })) + '</pre></div>')) + section('Previous Case Stages', card(table(timelineRows || row('Stage history', 'No prior stage events returned yet')))) + section('Evidence and Decisions', '<div style=\"display:block;border:1px solid #dbe5ef;border-radius:8px;background:#ffffff;padding:14px 16px;\"><h3 style=\"font-size:14px;margin:0 0 8px;color:#0f172a;\">Evidence</h3><ul style=\"margin:0 0 14px 18px;padding:0;color:#334155;line-height:1.45;\">' + evidenceHtml + '</ul><h3 style=\"font-size:14px;margin:0 0 8px;color:#0f172a;\">Decision trail</h3><ul style=\"margin:0 0 0 18px;padding:0;color:#334155;line-height:1.45;\">' + decisionHtml + '</ul></div>') + '<p style=\"margin:20px 0 0;font-size:14px;line-height:1.5;color:#475569;\">Dashboard: <a href=\"' + portalUrl + '\" style=\"color:#0f766e;font-weight:700;text-decoration:none;\">' + esc(portalUrl) + '</a></p></div><div style=\"background:#f8fafc;border-top:1px solid #e2e8f0;padding:14px 24px;color:#64748b;font-size:12px;line-height:1.45;\">Generated by UiPath Integration Service Gmail activity from the LoanShield Maestro case workflow after posting the portal callback and reading case context.</div></div></div></body></html>';\nreturn { subject, body, stage: effectiveStage, status: effectiveStatus, disputeId, eventType: effectiveEventType, portalUrl, contextEventCount: events.length, evidenceCount: evidence.length, decisionCount: decisions.length };",
+                        "language": "javascript",
+                        "arguments": "${{ \"$context\": $context, \"$workflow\": $workflow, \"$input\": $input }}"
+                      }
+                    },
+                    "export": {
+                      "as": "{ ...$context, outputs: { ...$context?.outputs, \"Javascript_EmailContent\": $output } }"
+                    },
+                    "metadata": {
+                      "activityType": "JsInvoke",
+                      "displayName": "Build HTML email content",
+                      "fullName": "JsInvoke"
+                    }
+                  }
+                },
+                {
+                  "SendEmail1": {
+                    "call": "UiPath.IntSvc",
+                    "with": {
+                      "connector": "uipath-google-gmail",
+                      "connectionId": "9275b8af-6494-4db6-b612-2f1ab9e82d55",
+                      "connectionResourceId": "9275b8af-6494-4db6-b612-2f1ab9e82d55",
+                      "method": "POST",
+                      "endpoint": "/SendEmail",
+                      "queryParameters": {
+                        "SaveAsDraft": false
+                      },
+                      "bodyParameters": {
+                        "Body": "${$context.outputs.Javascript_EmailContent.body}",
+                        "Importance": "normal",
+                        "Subject": "${$context.outputs.Javascript_EmailContent.subject}",
+                        "To": "demo-notifications@example.com"
+                      },
+                      "multipartParameters": [
+                        {
+                          "name": "file",
+                          "dataType": "file"
+                        },
+                        {
+                          "name": "body",
+                          "dataType": "string"
+                        }
+                      ]
+                    },
+                    "export": {
+                      "as": "{ ...$context, outputs: { ...$context?.outputs, \"SendEmail_1\": $output } }"
+                    },
+                    "metadata": {
+                      "fullName": "Connector",
+                      "activityType": "Connector",
+                      "displayName": "Send LoanShield Gmail notification",
+                      "uiPathActivityTypeId": "f2a5320d-a0d1-3aec-af8f-5b16ad9665a0",
+                      "assemblyQualifiedName": "Connector",
+                      "configuration": "{\"essentialConfiguration\":{\"connectorVersion\":\"\",\"executionType\":null,\"customFieldsRequestDetails\":null,\"instanceParameters\":{\"version\":\"1.0.0\",\"connectorKey\":\"uipath-google-gmail\",\"activityType\":\"Curated\",\"objectName\":\"SendEmail\",\"httpMethod\":\"POST\",\"operation\":null,\"eventOperation\":null,\"eventMode\":null,\"connectorObjects\":null,\"previewEndpoint\":null},\"objectName\":\"SendEmail\",\"operation\":null,\"packageVersion\":\"1.0.0\",\"httpMethod\":\"POST\",\"path\":\"/SendEmail\",\"unifiedTypesCompatible\":true,\"savedJitInputFieldId\":\"in_SendEmail\"}}"
+                    }
+                  }
+                },
+                {
+                  "WriteRow1": {
+                    "call": "UiPath.IntSvc",
+                    "with": {
+                      "connector": "uipath-google-sheets",
+                      "connectionId": "8218fa99-7480-4a71-8499-a5e5f8d592e3",
+                      "connectionResourceId": "8218fa99-7480-4a71-8499-a5e5f8d592e3",
+                      "method": "POST",
+                      "endpoint": "/WriteRow",
+                      "queryParameters": {
+                        "spreadsheetID": "1VuFlwlURHUV33sqPU0Kq8jSHu32ZcBo-Zu6A9vBVPJ0",
+                        "includeHeaders": false,
+                        "writeMode": "APPEND",
+                        "range": "Stage Updates!A2:H1000"
+                      },
+                      "bodyParameters": {
+                        "values[*]": "${[new Date().toISOString(), ($workflow.input.updatePayload || {}).externalDisputeId || 'demo', $context.outputs.Javascript_EmailContent.stage || 'Unknown', $context.outputs.Javascript_EmailContent.eventType || 'case.updated', $context.outputs.Javascript_EmailContent.status || 'completed', ($workflow.input.updatePayload || {}).title || 'Update', ($workflow.input.updatePayload || {}).actorName || 'LoanShield Maestro', ($workflow.input.updatePayload || {}).correlationId || 'corr-001']}"
+                      }
+                    },
+                    "export": {
+                      "as": "{ ...$context, outputs: { ...$context?.outputs, \"WriteRow_1\": $output } }"
+                    },
+                    "metadata": {
+                      "fullName": "Connector",
+                      "activityType": "Connector",
+                      "displayName": "Write LoanShield stage audit row",
+                      "uiPathActivityTypeId": "5750a441-e799-3824-98d9-5dc0202649ea",
+                      "assemblyQualifiedName": "Connector",
+                      "configuration": "{\"essentialConfiguration\":{\"connectorVersion\":\"\",\"executionType\":null,\"customFieldsRequestDetails\":null,\"instanceParameters\":{\"version\":\"1.0.0\",\"connectorKey\":\"uipath-google-sheets\",\"activityType\":\"Curated\",\"objectName\":\"WriteRow\",\"httpMethod\":\"POST\",\"operation\":null,\"eventOperation\":null,\"eventMode\":null,\"connectorObjects\":null,\"previewEndpoint\":null},\"objectName\":\"WriteRow\",\"operation\":null,\"packageVersion\":\"1.0.0\",\"httpMethod\":\"POST\",\"path\":\"/WriteRow\",\"unifiedTypesCompatible\":true,\"savedJitInputFieldId\":\"in_WriteRow\"}}"
+                    }
+                  }
+                }
+              ],
+              "catch": {
+                "as": "error",
+                "do": [
+                  {
+                    "Assign_NotificationWarning": {
+                      "set": {
+                        "notificationWarning": "${$error.title || $error.message || 'Gmail or Sheets notification failed'}"
+                      },
+                      "export": {
+                        "as": "{ ...$context, variables: { ...$context.variables, ...$output } }"
+                      },
+                      "metadata": {
+                        "activityType": "Assign",
+                        "displayName": "Capture notification warning",
+                        "fullName": "Assign",
+                        "isTransparent": false
+                      }
+                    }
+                  }
+                ]
+              },
+              "export": {
+                "as": "{ ...$context, outputs: { ...$context?.outputs, \"Try_Catch_Notifications\": $output } }"
+              },
+              "metadata": {
+                "activityType": "TryCatch",
+                "displayName": "Notify and audit stage update",
+                "fullName": "TryCatch"
+              }
+            }
+          },
+          {
+            "Javascript_1": {
+              "run": {
+                "script": {
+                  "code": "const input = $workflow.input || {}; const payload = input.updatePayload || {}; const response = $context.outputs.http_request_1 || {}; const contextResponse = $context.outputs.http_request_context || {}; const content = response.content ?? response.body ?? {}; let portalResponse = content; if ((!portalResponse || Object.keys(portalResponse).length === 0) && response.rawStringBody) { try { portalResponse = JSON.parse(response.rawStringBody); } catch (_) { portalResponse = { rawStringBody: response.rawStringBody }; } } const contextContent = contextResponse.content ?? contextResponse.body ?? {}; let caseContext = contextContent; if ((!caseContext || Object.keys(caseContext).length === 0) && contextResponse.rawStringBody) { try { caseContext = JSON.parse(contextResponse.rawStringBody); } catch (_) { caseContext = { rawStringBody: contextResponse.rawStringBody }; } } const statusCode = Number(response.code ?? response.statusCode ?? response.status ?? 0); const accepted = statusCode >= 200 && statusCode < 300; const gmailNotification = $context.outputs.SendEmail_1 || null; const sheetAudit = $context.outputs.WriteRow_1 || null; const notificationWarning = ($context.variables || {}).notificationWarning || ''; return { mode: 'live-vercel', statusCode, accepted, url: input.caseUpdatesUrl, externalCaseKey: payload.externalCaseKey || 'LoanShieldDemoPortal:LDS-20260628-0001', eventType: payload.eventType || 'case.updated', portalResponse, caseContext, request: response.request || null, gmailNotification, sheetAudit, notificationWarning, sentAt: new Date().toISOString(), payload };",
+                  "language": "javascript",
+                  "arguments": "${{ \"$context\": $context, \"$workflow\": $workflow, \"$input\": $input }}"
+                }
+              },
+              "export": {
+                "as": "{ ...$context, outputs: { ...$context?.outputs, \"Javascript_1\": $output } }"
+              },
+              "metadata": {
+                "activityType": "JsInvoke",
+                "displayName": "Normalize LoanShield callback response",
+                "fullName": "JsInvoke"
+              }
+            }
+          },
+          {
+            "Response_1": {
+              "response": "${{ callbackStatus: $context.outputs.Javascript_1.accepted ? 'posted' : 'failed', httpStatus: $context.outputs.Javascript_1.statusCode, accepted: $context.outputs.Javascript_1.accepted, gmailNotification: $context.outputs.Javascript_1.gmailNotification, sheetAudit: $context.outputs.Javascript_1.sheetAudit, notificationWarning: $context.outputs.Javascript_1.notificationWarning, portalResponse: $context.outputs.Javascript_1 }}",
+              "markJobAsFailed": false,
+              "then": "end",
+              "export": {
+                "as": "{ ...$context, outputs: { ...$context?.outputs, \"Response_1\": $output } }"
+              },
+              "metadata": {
+                "activityType": "Response",
+                "displayName": "Response",
+                "fullName": "Response"
+              }
+            }
+          }
+        ],
+        "metadata": {
+          "activityType": "Sequence",
+          "displayName": "Sequence",
+          "fullName": "Sequence"
+        }
+      }
+    }
+  ],
+  "evaluate": {
+    "mode": "strict",
+    "language": "javascript"
+  }
+}

@@ -1,0 +1,45 @@
+{
+    "$schema":  "https://cloud.uipath.com/draft/2024-12/entry-point",
+    "$id":  "entry-points.json",
+    "entryPoints":  [
+                        {
+                            "filePath":  "content/Workflow.json",
+                            "uniqueId":  "bd76b598-a979-460b-8164-f097c7124d4d",
+                            "type":  "api",
+                            "input":  {
+                                          "type":  "object",
+                                          "properties":  {
+                                                             "externalCaseKey":  {
+                                                                                     "type":  "string"
+                                                                                 },
+                                                             "eventType":  {
+                                                                               "type":  "string"
+                                                                           },
+                                                             "actorName":  {
+                                                                               "type":  "string"
+                                                                           },
+                                                             "title":  {
+                                                                           "type":  "string"
+                                                                       },
+                                                             "description":  {
+                                                                                 "type":  "string"
+                                                                             },
+                                                             "payload":  {
+                                                                             "type":  "object"
+                                                                         }
+                                                         },
+                                          "title":  "Inputs"
+                                      },
+                            "output":  {
+                                           "type":  "object",
+                                           "properties":  {
+                                                              "auditEvent":  {
+                                                                                 "type":  "object"
+                                                                             }
+                                                          },
+                                           "title":  "Outputs"
+                                       },
+                            "displayName":  "Audit_WriteCaseEvent"
+                        }
+                    ]
+}

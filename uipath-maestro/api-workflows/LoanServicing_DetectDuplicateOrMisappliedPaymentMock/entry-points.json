@@ -1,0 +1,45 @@
+{
+    "$schema":  "https://cloud.uipath.com/draft/2024-12/entry-point",
+    "$id":  "entry-points.json",
+    "entryPoints":  [
+                        {
+                            "filePath":  "content/Workflow.json",
+                            "uniqueId":  "e61e3318-37aa-4021-8cd5-8c1fe9d2f7ad",
+                            "type":  "api",
+                            "input":  {
+                                          "type":  "object",
+                                          "properties":  {
+                                                             "disputeType":  {
+                                                                                 "type":  "string"
+                                                                             },
+                                                             "disputedAmount":  {
+                                                                                    "type":  "number"
+                                                                                },
+                                                             "evidenceScore":  {
+                                                                                   "type":  "number"
+                                                                               }
+                                                         },
+                                          "title":  "Inputs"
+                                      },
+                            "output":  {
+                                           "type":  "object",
+                                           "properties":  {
+                                                              "investigationFinding":  {
+                                                                                           "type":  "string"
+                                                                                       },
+                                                              "recommendedOutcome":  {
+                                                                                         "type":  "string"
+                                                                                     },
+                                                              "recommendedAmount":  {
+                                                                                        "type":  "number"
+                                                                                    },
+                                                              "confidence":  {
+                                                                                 "type":  "number"
+                                                                             }
+                                                          },
+                                           "title":  "Outputs"
+                                       },
+                            "displayName":  "LoanServicing_DetectDuplicateOrMisappliedPaymentMock"
+                        }
+                    ]
+}

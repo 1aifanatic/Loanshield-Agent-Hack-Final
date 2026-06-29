@@ -1,0 +1,42 @@
+{
+    "$schema":  "https://cloud.uipath.com/draft/2024-12/entry-point",
+    "$id":  "entry-points.json",
+    "entryPoints":  [
+                        {
+                            "filePath":  "content/Workflow.json",
+                            "uniqueId":  "d8252ada-5af1-4835-9365-e7ef2cb9f9be",
+                            "type":  "api",
+                            "input":  {
+                                          "type":  "object",
+                                          "properties":  {
+                                                             "customerName":  {
+                                                                                  "type":  "string"
+                                                                              },
+                                                             "customerSegment":  {
+                                                                                     "type":  "string"
+                                                                                 },
+                                                             "vulnerableCustomerFlag":  {
+                                                                                            "type":  "boolean"
+                                                                                        },
+                                                             "preferredChannel":  {
+                                                                                      "type":  "string"
+                                                                                  }
+                                                         },
+                                          "title":  "Inputs"
+                                      },
+                            "output":  {
+                                           "type":  "object",
+                                           "properties":  {
+                                                              "customerProfile":  {
+                                                                                      "type":  "object"
+                                                                                  },
+                                                              "requiresVulnerableCustomerReview":  {
+                                                                                                       "type":  "boolean"
+                                                                                                   }
+                                                          },
+                                           "title":  "Outputs"
+                                       },
+                            "displayName":  "LoanServicing_RetrieveCustomerProfileMock"
+                        }
+                    ]
+}

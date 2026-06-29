@@ -1,0 +1,48 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "$id": "entry-points.json",
+  "entryPoints": [
+    {
+      "filePath": "/content/agent.json",
+      "uniqueId": "223b6044-4155-45dc-a59d-0a46eee59c4f",
+      "type": "agent",
+      "input": {
+        "type": "object",
+        "properties": {
+          "caseJson": {
+            "type": "object",
+            "description": "Canonical LoanShield case, webhook, context, evidence, policy, investigation, decision, and callback state."
+          }
+        },
+        "required": [
+          "caseJson"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "evidenceComplete": {
+            "type": "boolean",
+            "description": "True when evidence is sufficient"
+          },
+          "evidenceScore": {
+            "type": "number",
+            "description": "Evidence sufficiency score from 0 to 1"
+          },
+          "missingEvidenceList": {
+            "type": "array",
+            "description": "Missing evidence items"
+          },
+          "requestedEvidenceMessage": {
+            "type": "string",
+            "description": "Customer-safe evidence request text"
+          },
+          "returnToOriginStage": {
+            "type": "string",
+            "description": "Stage to return to after follow-up evidence"
+          }
+        }
+      }
+    }
+  ]
+}

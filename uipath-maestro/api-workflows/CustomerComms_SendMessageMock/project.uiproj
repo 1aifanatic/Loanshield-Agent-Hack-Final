@@ -1,0 +1,6 @@
+{
+    "ProjectType":  "Api",
+    "Name":  "CustomerComms_SendMessageMock",
+    "Description":  "Simulates sending the approved customer message.",
+    "MainFile":  "Workflow.json"
+}

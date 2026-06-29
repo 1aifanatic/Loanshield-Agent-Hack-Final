@@ -1,0 +1,18 @@
+{
+  "document": { "dsl": "1.0.0", "name": "LoanServicing_DetectDuplicateOrMisappliedPaymentMock", "version": "0.0.1", "namespace": "loanshield", "metadata": { "variables": { "schema": { "format": "json", "document": { "type": "object", "properties": {}, "title": "Variables" } } } } },
+  "input": { "schema": { "format": "json", "document": { "type": "object", "properties": { "disputeType": { "type": "string" }, "disputedAmount": { "type": "number" }, "evidenceScore": { "type": "number" } }, "title": "Inputs" } } },
+  "output": { "schema": { "format": "json", "document": { "type": "object", "properties": { "investigationFinding": { "type": "string" }, "recommendedOutcome": { "type": "string" }, "recommendedAmount": { "type": "number" }, "confidence": { "type": "number" } }, "title": "Outputs" } } },
+  "do": [
+    {
+      "Sequence_1": {
+        "do": [
+          { "WorkflowStart": { "set": "${Object.entries($workflow.definition?.document?.metadata?.variables?.schema?.document?.properties || {}).reduce((acc, [name, def]) => ({ ...acc, [name]: def?.default }), {}) }", "output": { "as": "${$input}" }, "export": { "as": "{ ...$context, variables: { ...$context.variables, ...$output } }" }, "metadata": { "activityType": "Assign", "displayName": "Workflow start", "fullName": "Assign", "isTransparent": true } } },
+          { "Javascript_1": { "run": { "script": { "code": "const input = $workflow.input || {}; const type = input.disputeType || 'duplicate_autopay'; const amount = Number(input.disputedAmount || 0); const score = Number(input.evidenceScore ?? 0.8); const mapping = { duplicate_autopay: ['Duplicate debit confirmed', 'approve_refund'], misapplied_payment_late_fee: ['Payment trace supports reallocation and fee waiver', 'approve_correction'], escrow_charge_dispute: ['Escrow documentation supports explanation or correction', 'approve_explanation_or_correction'], suspected_loan_scam: ['Synthetic scam indicators require fraud hold and compliance referral', 'escalate_fraud_hold'] }; const row = mapping[type] || ['No deterministic match; send to human review', 'human_review']; return { investigationFinding: row[0], recommendedOutcome: row[1], recommendedAmount: row[1].includes('approve') ? amount : 0, confidence: Math.max(0.68, Math.min(0.96, score + 0.12)) };", "language": "javascript", "arguments": "${{ \"$context\": $context, \"$workflow\": $workflow, \"$input\": $input }}" } }, "export": { "as": "{ ...$context, outputs: { ...$context?.outputs, \"Javascript_1\": $output } }" }, "metadata": { "activityType": "JsInvoke", "displayName": "Investigate synthetic ledger", "fullName": "JsInvoke" } } },
+          { "Response_1": { "response": "${$context.outputs.Javascript_1}", "markJobAsFailed": false, "then": "end", "export": { "as": "{ ...$context, outputs: { ...$context?.outputs, \"Response_1\": $output } }" }, "metadata": { "activityType": "Response", "displayName": "Response", "fullName": "Response" } } }
+        ],
+        "metadata": { "activityType": "Sequence", "displayName": "Sequence", "fullName": "Sequence" }
+      }
+    }
+  ],
+  "evaluate": { "mode": "strict", "language": "javascript" }
+}

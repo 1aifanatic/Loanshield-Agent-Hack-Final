@@ -1,0 +1,18 @@
+{
+  "document": { "dsl": "1.0.0", "name": "FraudOps_CreateFraudHoldMock", "version": "0.0.1", "namespace": "loanshield", "metadata": { "variables": { "schema": { "format": "json", "document": { "type": "object", "properties": {}, "title": "Variables" } } } } },
+  "input": { "schema": { "format": "json", "document": { "type": "object", "properties": { "externalCaseKey": { "type": "string" }, "fraudRiskScore": { "type": "number" }, "fraudIndicators": { "type": "array" } }, "title": "Inputs" } } },
+  "output": { "schema": { "format": "json", "document": { "type": "object", "properties": { "fraudHoldStatus": { "type": "string" }, "holdReference": { "type": "string" }, "requiresComplianceReferral": { "type": "boolean" } }, "title": "Outputs" } } },
+  "do": [
+    {
+      "Sequence_1": {
+        "do": [
+          { "WorkflowStart": { "set": "${Object.entries($workflow.definition?.document?.metadata?.variables?.schema?.document?.properties || {}).reduce((acc, [name, def]) => ({ ...acc, [name]: def?.default }), {}) }", "output": { "as": "${$input}" }, "export": { "as": "{ ...$context, variables: { ...$context.variables, ...$output } }" }, "metadata": { "activityType": "Assign", "displayName": "Workflow start", "fullName": "Assign", "isTransparent": true } } },
+          { "Javascript_1": { "run": { "script": { "code": "const input = $workflow.input || {}; const score = Number(input.fraudRiskScore || 0.86); return { fraudHoldStatus: score >= 0.8 ? 'hold_created_demo_only' : 'hold_not_required', holdReference: score >= 0.8 ? `SIM-FRAUD-HOLD-${Date.now()}` : '', requiresComplianceReferral: score >= 0.8 };", "language": "javascript", "arguments": "${{ \"$context\": $context, \"$workflow\": $workflow, \"$input\": $input }}" } }, "export": { "as": "{ ...$context, outputs: { ...$context?.outputs, \"Javascript_1\": $output } }" }, "metadata": { "activityType": "JsInvoke", "displayName": "Create synthetic fraud hold", "fullName": "JsInvoke" } } },
+          { "Response_1": { "response": "${$context.outputs.Javascript_1}", "markJobAsFailed": false, "then": "end", "export": { "as": "{ ...$context, outputs: { ...$context?.outputs, \"Response_1\": $output } }" }, "metadata": { "activityType": "Response", "displayName": "Response", "fullName": "Response" } } }
+        ],
+        "metadata": { "activityType": "Sequence", "displayName": "Sequence", "fullName": "Sequence" }
+      }
+    }
+  ],
+  "evaluate": { "mode": "strict", "language": "javascript" }
+}

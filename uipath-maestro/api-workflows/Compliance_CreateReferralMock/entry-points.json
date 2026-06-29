@@ -1,0 +1,42 @@
+{
+    "$schema":  "https://cloud.uipath.com/draft/2024-12/entry-point",
+    "$id":  "entry-points.json",
+    "entryPoints":  [
+                        {
+                            "filePath":  "content/Workflow.json",
+                            "uniqueId":  "c2375287-8a9a-4772-9dc1-bfd91024dcc0",
+                            "type":  "api",
+                            "input":  {
+                                          "type":  "object",
+                                          "properties":  {
+                                                             "externalCaseKey":  {
+                                                                                     "type":  "string"
+                                                                                 },
+                                                             "reason":  {
+                                                                            "type":  "string"
+                                                                        },
+                                                             "fraudRiskScore":  {
+                                                                                    "type":  "number"
+                                                                                }
+                                                         },
+                                          "title":  "Inputs"
+                                      },
+                            "output":  {
+                                           "type":  "object",
+                                           "properties":  {
+                                                              "referralStatus":  {
+                                                                                     "type":  "string"
+                                                                                 },
+                                                              "referralReference":  {
+                                                                                        "type":  "string"
+                                                                                    },
+                                                              "referralReason":  {
+                                                                                     "type":  "string"
+                                                                                 }
+                                                          },
+                                           "title":  "Outputs"
+                                       },
+                            "displayName":  "Compliance_CreateReferralMock"
+                        }
+                    ]
+}

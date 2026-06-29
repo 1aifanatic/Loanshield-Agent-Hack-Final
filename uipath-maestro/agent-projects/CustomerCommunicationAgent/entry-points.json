@@ -1,0 +1,48 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "$id": "entry-points.json",
+  "entryPoints": [
+    {
+      "filePath": "/content/agent.json",
+      "uniqueId": "9ef33cd0-91ab-49ef-8127-185bcf5cd83f",
+      "type": "agent",
+      "input": {
+        "type": "object",
+        "properties": {
+          "caseJson": {
+            "type": "object",
+            "description": "Canonical LoanShield case, webhook, context, evidence, policy, investigation, decision, and callback state."
+          }
+        },
+        "required": [
+          "caseJson"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "subject": {
+            "type": "string",
+            "description": "Draft message subject"
+          },
+          "body": {
+            "type": "string",
+            "description": "Draft message body"
+          },
+          "tone": {
+            "type": "string",
+            "description": "Communication tone"
+          },
+          "requiresHumanApprovalBeforeSend": {
+            "type": "boolean",
+            "description": "True when message requires human approval"
+          },
+          "confidence": {
+            "type": "number",
+            "description": "Draft confidence from 0 to 1"
+          }
+        }
+      }
+    }
+  ]
+}

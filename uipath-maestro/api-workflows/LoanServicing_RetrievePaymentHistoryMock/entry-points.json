@@ -1,0 +1,45 @@
+{
+    "$schema":  "https://cloud.uipath.com/draft/2024-12/entry-point",
+    "$id":  "entry-points.json",
+    "entryPoints":  [
+                        {
+                            "filePath":  "content/Workflow.json",
+                            "uniqueId":  "4ace9a10-5d69-4645-887e-527bd2331dd9",
+                            "type":  "api",
+                            "input":  {
+                                          "type":  "object",
+                                          "properties":  {
+                                                             "externalCaseKey":  {
+                                                                                     "type":  "string"
+                                                                                 },
+                                                             "disputeType":  {
+                                                                                 "type":  "string"
+                                                                             },
+                                                             "transactionId":  {
+                                                                                   "type":  "string"
+                                                                               },
+                                                             "disputedAmount":  {
+                                                                                    "type":  "number"
+                                                                                }
+                                                         },
+                                          "title":  "Inputs"
+                                      },
+                            "output":  {
+                                           "type":  "object",
+                                           "properties":  {
+                                                              "paymentHistorySummary":  {
+                                                                                            "type":  "object"
+                                                                                        },
+                                                              "duplicateCandidate":  {
+                                                                                         "type":  "boolean"
+                                                                                     },
+                                                              "callbackEventType":  {
+                                                                                        "type":  "string"
+                                                                                    }
+                                                          },
+                                           "title":  "Outputs"
+                                       },
+                            "displayName":  "LoanServicing_RetrievePaymentHistoryMock"
+                        }
+                    ]
+}

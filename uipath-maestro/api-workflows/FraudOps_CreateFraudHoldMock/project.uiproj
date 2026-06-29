@@ -1,0 +1,6 @@
+{
+    "ProjectType":  "Api",
+    "Name":  "FraudOps_CreateFraudHoldMock",
+    "Description":  "Simulates a fraud hold note and protective action for suspicious payoff scam cases.",
+    "MainFile":  "Workflow.json"
+}

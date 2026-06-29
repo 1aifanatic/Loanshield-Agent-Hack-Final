@@ -1,0 +1,6 @@
+{
+    "ProjectType":  "Api",
+    "Name":  "NextPortal_SyncCaseUpdate",
+    "Description":  "Posts standardized LoanShield case timeline updates back to the Next.js demo portal.",
+    "MainFile":  "Workflow.json"
+}

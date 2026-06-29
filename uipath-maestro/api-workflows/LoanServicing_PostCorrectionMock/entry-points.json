@@ -1,0 +1,48 @@
+{
+    "$schema":  "https://cloud.uipath.com/draft/2024-12/entry-point",
+    "$id":  "entry-points.json",
+    "entryPoints":  [
+                        {
+                            "filePath":  "content/Workflow.json",
+                            "uniqueId":  "4b1762c3-f5d1-42f3-a197-d3bb74b9d572",
+                            "type":  "api",
+                            "input":  {
+                                          "type":  "object",
+                                          "properties":  {
+                                                             "externalCaseKey":  {
+                                                                                     "type":  "string"
+                                                                                 },
+                                                             "humanDecision":  {
+                                                                                   "type":  "string"
+                                                                               },
+                                                             "approvedAmount":  {
+                                                                                    "type":  "number"
+                                                                                },
+                                                             "recommendedOutcome":  {
+                                                                                        "type":  "string"
+                                                                                    }
+                                                         },
+                                          "title":  "Inputs"
+                                      },
+                            "output":  {
+                                           "type":  "object",
+                                           "properties":  {
+                                                              "settlementStatus":  {
+                                                                                       "type":  "string"
+                                                                                   },
+                                                              "settlementReference":  {
+                                                                                          "type":  "string"
+                                                                                      },
+                                                              "postedAmount":  {
+                                                                                   "type":  "number"
+                                                                               },
+                                                              "callbackEventType":  {
+                                                                                        "type":  "string"
+                                                                                    }
+                                                          },
+                                           "title":  "Outputs"
+                                       },
+                            "displayName":  "LoanServicing_PostCorrectionMock"
+                        }
+                    ]
+}

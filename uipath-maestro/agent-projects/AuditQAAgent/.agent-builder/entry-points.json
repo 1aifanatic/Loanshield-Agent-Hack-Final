@@ -1,0 +1,48 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "$id": "entry-points.json",
+  "entryPoints": [
+    {
+      "filePath": "/content/agent.json",
+      "uniqueId": "a0190edb-fdca-4f99-9efb-852227adfb5f",
+      "type": "agent",
+      "input": {
+        "type": "object",
+        "properties": {
+          "caseJson": {
+            "type": "object",
+            "description": "Canonical LoanShield case, webhook, context, evidence, policy, investigation, decision, and callback state."
+          }
+        },
+        "required": [
+          "caseJson"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "auditCompletenessScore": {
+            "type": "number",
+            "description": "Audit completeness score from 0 to 1"
+          },
+          "missingAuditItems": {
+            "type": "array",
+            "description": "Missing audit items"
+          },
+          "requiredApprovalsPresent": {
+            "type": "boolean",
+            "description": "True when required human approvals are present"
+          },
+          "closeCaseRecommended": {
+            "type": "boolean",
+            "description": "True when the case can close"
+          },
+          "auditSummary": {
+            "type": "string",
+            "description": "Closure audit summary"
+          }
+        }
+      }
+    }
+  ]
+}

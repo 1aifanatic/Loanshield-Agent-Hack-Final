@@ -1,0 +1,48 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "$id": "entry-points.json",
+  "entryPoints": [
+    {
+      "filePath": "/content/agent.json",
+      "uniqueId": "2d3e6203-ac35-47bc-aa5a-c9fb43bd134b",
+      "type": "agent",
+      "input": {
+        "type": "object",
+        "properties": {
+          "caseJson": {
+            "type": "object",
+            "description": "Canonical LoanShield case, webhook, context, evidence, policy, investigation, decision, and callback state."
+          }
+        },
+        "required": [
+          "caseJson"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "fraudRiskScore": {
+            "type": "number",
+            "description": "Fraud risk score from 0 to 1"
+          },
+          "fraudIndicators": {
+            "type": "array",
+            "description": "Observed synthetic fraud indicators"
+          },
+          "requiresFraudHold": {
+            "type": "boolean",
+            "description": "True when fraud hold is recommended"
+          },
+          "requiresComplianceReferral": {
+            "type": "boolean",
+            "description": "True when compliance or AML referral is recommended"
+          },
+          "rationale": {
+            "type": "string",
+            "description": "Fraud analysis rationale"
+          }
+        }
+      }
+    }
+  ]
+}

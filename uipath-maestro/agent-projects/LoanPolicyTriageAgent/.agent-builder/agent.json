@@ -1,0 +1,90 @@
+{
+  "id": "5e605812-167f-469e-b2bf-008f1ac8cb32",
+  "version": "1.1.0",
+  "name": "LoanPolicyTriageAgent",
+  "metadata": {
+    "storageVersion": "50.0.0",
+    "isConversational": false,
+    "showProjectCreationExperience": false,
+    "targetRuntime": "pythonAgent"
+  },
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the LoanShield Maestro loan policy triage agent. Select the servicing policy path, evidence requirements, SLA, approval thresholds, and next stage for a synthetic loan dispute or scam case. Agents may recommend, but humans approve customer-impacting outcomes. Return structured JSON that matches the configured output schema. Do not invent real personal, bank, payment, or loan data. Use only synthetic/demo values present in caseJson or clearly marked demo assumptions.",
+      "contentTokens": [
+        {
+          "type": "simpleText",
+          "rawString": "You are the LoanShield Maestro loan policy triage agent. Select the servicing policy path, evidence requirements, SLA, approval thresholds, and next stage for a synthetic loan dispute or scam case. Agents may recommend, but humans approve customer-impacting outcomes. Return structured JSON that matches the configured output schema. Do not invent real personal, bank, payment, or loan data. Use only synthetic/demo values present in caseJson or clearly marked demo assumptions."
+        }
+      ]
+    },
+    {
+      "role": "user",
+      "content": "Case JSON: {{input.caseJson}}",
+      "contentTokens": [
+        {
+          "type": "simpleText",
+          "rawString": "Case JSON: "
+        },
+        {
+          "type": "variable",
+          "rawString": "input.caseJson"
+        }
+      ]
+    }
+  ],
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "caseJson": {
+        "type": "object",
+        "description": "Canonical LoanShield case, webhook, context, evidence, policy, investigation, decision, and callback state."
+      }
+    },
+    "required": [
+      "caseJson"
+    ]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "policyPath": {
+        "type": "string",
+        "description": "Selected policy path"
+      },
+      "policyConfidence": {
+        "type": "number",
+        "description": "Policy selection confidence from 0 to 1"
+      },
+      "requiredEvidenceList": {
+        "type": "array",
+        "description": "Evidence types required before investigation"
+      },
+      "requiresHumanApproval": {
+        "type": "boolean",
+        "description": "True when human approval is mandatory"
+      },
+      "slaHours": {
+        "type": "number",
+        "description": "Recommended SLA in hours"
+      },
+      "recommendedNextStage": {
+        "type": "string",
+        "description": "Next primary or secondary stage"
+      }
+    }
+  },
+  "settings": {
+    "model": "gpt-4.1-2025-04-14",
+    "maxTokens": 16384,
+    "temperature": 0,
+    "engine": "basic-v2",
+    "maxIterations": 25,
+    "mode": "standard"
+  },
+  "type": "lowCode",
+  "projectId": "5e605812-167f-469e-b2bf-008f1ac8cb32",
+  "resources": [],
+  "features": []
+}

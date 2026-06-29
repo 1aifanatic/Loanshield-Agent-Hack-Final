@@ -1,0 +1,6 @@
+{
+    "ProjectType":  "Api",
+    "Name":  "WebhookIntake_CreateOrCorrelateCase",
+    "Description":  "Validates the LoanShield portal webhook payload and returns correlation data for Maestro Case intake.",
+    "MainFile":  "Workflow.json"
+}

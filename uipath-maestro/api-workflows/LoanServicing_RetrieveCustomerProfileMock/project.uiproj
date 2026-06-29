@@ -1,0 +1,6 @@
+{
+    "ProjectType":  "Api",
+    "Name":  "LoanServicing_RetrieveCustomerProfileMock",
+    "Description":  "Returns synthetic customer and vulnerability context for routing.",
+    "MainFile":  "Workflow.json"
+}

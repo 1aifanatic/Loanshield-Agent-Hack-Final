@@ -1,0 +1,6 @@
+{
+    "ProjectType":  "Api",
+    "Name":  "NextPortal_GetCaseContext",
+    "Description":  "Retrieves current synthetic dispute context from the Next.js demo portal.",
+    "MainFile":  "Workflow.json"
+}

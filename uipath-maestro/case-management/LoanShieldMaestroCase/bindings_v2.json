@@ -1,0 +1,29 @@
+{
+  "version": "2.0",
+  "resources": [
+    {
+      "resource": "EventTrigger",
+      "key": "StartEvent_Trigger_vKWIBX",
+      "id": "EventTriggerStartEvent_Trigger_vKWIBX",
+      "value": {
+        "ConnectionId": {
+          "defaultValue": "c679be53-eb27-4d63-be7a-f899a2205a07",
+          "isExpression": false
+        },
+        "EntryPointUniqueId": {
+          "defaultValue": "4006a10e-0e2a-43a4-9fee-232270b84e87",
+          "isExpression": false
+        }
+      },
+      "metadata": {
+        "UseConnectionService": "true",
+        "Connector": "uipath-http-webhook",
+        "ActivityName": "Trigger 2",
+        "BindingsVersion": "2.2",
+        "ObjectName": "HTTP_WEBHOOK",
+        "Operation": "GENERIC",
+        "FilterExpression": ""
+      }
+    }
+  ]
+}

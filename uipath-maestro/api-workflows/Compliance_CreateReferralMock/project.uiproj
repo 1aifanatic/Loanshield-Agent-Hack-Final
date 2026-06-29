@@ -1,0 +1,6 @@
+{
+    "ProjectType":  "Api",
+    "Name":  "Compliance_CreateReferralMock",
+    "Description":  "Simulates a compliance or AML referral record.",
+    "MainFile":  "Workflow.json"
+}

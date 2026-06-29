@@ -1,0 +1,52 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "$id": "entry-points.json",
+  "entryPoints": [
+    {
+      "filePath": "/content/agent.json",
+      "uniqueId": "d28b75e7-db9f-425b-bc5f-921386d4da0d",
+      "type": "agent",
+      "input": {
+        "type": "object",
+        "properties": {
+          "caseJson": {
+            "type": "object",
+            "description": "Canonical LoanShield case, webhook, context, evidence, policy, investigation, decision, and callback state."
+          }
+        },
+        "required": [
+          "caseJson"
+        ]
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "policyPath": {
+            "type": "string",
+            "description": "Selected policy path"
+          },
+          "policyConfidence": {
+            "type": "number",
+            "description": "Policy selection confidence from 0 to 1"
+          },
+          "requiredEvidenceList": {
+            "type": "array",
+            "description": "Evidence types required before investigation"
+          },
+          "requiresHumanApproval": {
+            "type": "boolean",
+            "description": "True when human approval is mandatory"
+          },
+          "slaHours": {
+            "type": "number",
+            "description": "Recommended SLA in hours"
+          },
+          "recommendedNextStage": {
+            "type": "string",
+            "description": "Next primary or secondary stage"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+    "ProjectType":  "Api",
+    "Name":  "LoanServicing_DetectDuplicateOrMisappliedPaymentMock",
+    "Description":  "Compares the dispute claim against a synthetic payment ledger and recommends an investigation result.",
+    "MainFile":  "Workflow.json"
+}

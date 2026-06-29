@@ -1,0 +1,3406 @@
+{
+  "case": {
+    "completionConditions": [
+      {
+        "completionConditionType": "StagesCompleted",
+        "parameters": {
+          "stageNames": [
+            "Closure and Audit QA",
+            "Customer Communication",
+            "Settlement and Correction",
+            "Human Decision",
+            "Parallel Servicing / Fraud Investigation",
+            "Evidence Collection",
+            "Eligibility and Policy Triage",
+            "Loan Context Retrieval",
+            "Demo Intake"
+          ]
+        },
+        "ruleName": "All required primary stages completed"
+      }
+    ]
+  },
+  "stages": [
+    {
+      "name": "Integration Error Recovery",
+      "entryConditions": [],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Post integration error callback"
+            ]
+          },
+          "ruleName": "Required tasks completed"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Post integration error callback",
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Integration Error Recovery"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Appeal / Reopen",
+      "entryConditions": [],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Appeal reopen review action"
+            ]
+          },
+          "ruleName": "Required tasks completed"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Appeal reopen review action",
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Appeal / Reopen"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Withdrawn Case",
+      "entryConditions": [],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Post withdrawn case callback"
+            ]
+          },
+          "ruleName": "Required tasks completed"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Post withdrawn case callback",
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Withdrawn Case"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Duplicate Case",
+      "entryConditions": [],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Post duplicate case callback"
+            ]
+          },
+          "ruleName": "Required tasks completed"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Post duplicate case callback",
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Duplicate Case"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SLA Escalation",
+      "entryConditions": [],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Post SLA at risk callback"
+            ]
+          },
+          "ruleName": "Required tasks completed"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Post SLA at risk callback",
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "SLA Escalation"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Credit Bureau Impact Review",
+      "entryConditions": [],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Credit bureau impact review action"
+            ]
+          },
+          "ruleName": "Required tasks completed"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Credit bureau impact review action",
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Credit Bureau Impact Review"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Compliance / AML Referral",
+      "entryConditions": [],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Create compliance referral mock",
+              "Post compliance referral callback"
+            ]
+          },
+          "ruleName": "Required tasks completed"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Create compliance referral mock",
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Compliance / AML Referral"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        },
+        {
+          "name": "Post compliance referral callback",
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Compliance / AML Referral"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Manager Review",
+      "entryConditions": [],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Manager exception review action"
+            ]
+          },
+          "ruleName": "Required tasks completed"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Manager exception review action",
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Manager Review"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Vulnerable Customer Review",
+      "entryConditions": [],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Vulnerable customer review action"
+            ]
+          },
+          "ruleName": "Required tasks completed"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Vulnerable customer review action",
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Vulnerable Customer Review"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fraud Hold",
+      "entryConditions": [],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Fraud hold supervisor action",
+              "Create synthetic fraud hold",
+              "Post fraud hold callback"
+            ]
+          },
+          "ruleName": "Required tasks completed"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Fraud hold supervisor action",
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Fraud Hold"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        },
+        {
+          "name": "Create synthetic fraud hold",
+          "entryConditions": [
+            {
+              "operator": "AND",
+              "conditions": [
+                {
+                  "entryConditionType": "StageEntered",
+                  "parameters": {
+                    "stageNames": [
+                      "Fraud Hold"
+                    ]
+                  }
+                },
+                {
+                  "entryConditionType": "TasksCompleted",
+                  "parameters": {
+                    "taskNames": [
+                      "Fraud hold supervisor action"
+                    ]
+                  }
+                }
+              ],
+              "ruleName": "Run sequentially"
+            }
+          ]
+        },
+        {
+          "name": "Post fraud hold callback",
+          "entryConditions": [
+            {
+              "operator": "AND",
+              "conditions": [
+                {
+                  "entryConditionType": "StageEntered",
+                  "parameters": {
+                    "stageNames": [
+                      "Fraud Hold"
+                    ]
+                  }
+                },
+                {
+                  "entryConditionType": "TasksCompleted",
+                  "parameters": {
+                    "taskNames": [
+                      "Create synthetic fraud hold"
+                    ]
+                  }
+                }
+              ],
+              "ruleName": "Run sequentially"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pending Customer Information",
+      "entryConditions": [],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Post pending customer information callback"
+            ]
+          },
+          "ruleName": "Required tasks completed"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Post pending customer information callback",
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Pending Customer Information"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Closure and Audit QA",
+      "entryConditions": [
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Integration Error Recovery"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Appeal / Reopen"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Withdrawn Case"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Duplicate Case"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "SLA Escalation"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Credit Bureau Impact Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Compliance / AML Referral"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Manager Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Vulnerable Customer Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Fraud Hold"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Closure and Audit QA\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Pending Customer Information"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "entryConditionType": "StagesCompleted",
+          "parameters": {
+            "stageNames": [
+              "Customer Communication"
+            ]
+          },
+          "ruleName": "Previous primary stage completed"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Run Audit QA Agent",
+              "Write closure audit event",
+              "Post case.closed callback"
+            ]
+          },
+          "ruleName": "Required tasks completed"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Run Audit QA Agent",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Closure and Audit QA"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        },
+        {
+          "name": "Write closure audit event",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "operator": "AND",
+              "conditions": [
+                {
+                  "entryConditionType": "StageEntered",
+                  "parameters": {
+                    "stageNames": [
+                      "Closure and Audit QA"
+                    ]
+                  }
+                },
+                {
+                  "entryConditionType": "TasksCompleted",
+                  "parameters": {
+                    "taskNames": [
+                      "Run Audit QA Agent"
+                    ]
+                  }
+                }
+              ],
+              "ruleName": "Run sequentially"
+            }
+          ]
+        },
+        {
+          "name": "Post case.closed callback",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "operator": "AND",
+              "conditions": [
+                {
+                  "entryConditionType": "StageEntered",
+                  "parameters": {
+                    "stageNames": [
+                      "Closure and Audit QA"
+                    ]
+                  }
+                },
+                {
+                  "entryConditionType": "TasksCompleted",
+                  "parameters": {
+                    "taskNames": [
+                      "Write closure audit event"
+                    ]
+                  }
+                }
+              ],
+              "ruleName": "Run sequentially"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Customer Communication",
+      "entryConditions": [
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Integration Error Recovery"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Appeal / Reopen"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Withdrawn Case"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Duplicate Case"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "SLA Escalation"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Credit Bureau Impact Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Compliance / AML Referral"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Manager Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Vulnerable Customer Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Fraud Hold"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Customer Communication\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Pending Customer Information"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "entryConditionType": "StagesCompleted",
+          "parameters": {
+            "stageNames": [
+              "Settlement and Correction"
+            ]
+          },
+          "ruleName": "Previous primary stage completed"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Draft customer communication",
+              "Send synthetic customer message",
+              "Post communication callback"
+            ]
+          },
+          "ruleName": "Required tasks completed"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Draft customer communication",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Customer Communication"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        },
+        {
+          "name": "Send synthetic customer message",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "operator": "AND",
+              "conditions": [
+                {
+                  "entryConditionType": "StageEntered",
+                  "parameters": {
+                    "stageNames": [
+                      "Customer Communication"
+                    ]
+                  }
+                },
+                {
+                  "entryConditionType": "TasksCompleted",
+                  "parameters": {
+                    "taskNames": [
+                      "Draft customer communication"
+                    ]
+                  }
+                }
+              ],
+              "ruleName": "Run sequentially"
+            }
+          ]
+        },
+        {
+          "name": "Post communication callback",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "operator": "AND",
+              "conditions": [
+                {
+                  "entryConditionType": "StageEntered",
+                  "parameters": {
+                    "stageNames": [
+                      "Customer Communication"
+                    ]
+                  }
+                },
+                {
+                  "entryConditionType": "TasksCompleted",
+                  "parameters": {
+                    "taskNames": [
+                      "Send synthetic customer message"
+                    ]
+                  }
+                }
+              ],
+              "ruleName": "Run sequentially"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Settlement and Correction",
+      "entryConditions": [
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Integration Error Recovery"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Appeal / Reopen"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Withdrawn Case"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Duplicate Case"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "SLA Escalation"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Credit Bureau Impact Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Compliance / AML Referral"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Manager Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Vulnerable Customer Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Fraud Hold"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Settlement and Correction\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Pending Customer Information"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "entryConditionType": "StagesCompleted",
+          "parameters": {
+            "stageNames": [
+              "Human Decision"
+            ]
+          },
+          "ruleName": "Previous primary stage completed"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Post synthetic correction",
+              "Post settlement callback"
+            ]
+          },
+          "ruleName": "Required tasks completed"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Post synthetic correction",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Settlement and Correction"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        },
+        {
+          "name": "Post settlement callback",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "operator": "AND",
+              "conditions": [
+                {
+                  "entryConditionType": "StageEntered",
+                  "parameters": {
+                    "stageNames": [
+                      "Settlement and Correction"
+                    ]
+                  }
+                },
+                {
+                  "entryConditionType": "TasksCompleted",
+                  "parameters": {
+                    "taskNames": [
+                      "Post synthetic correction"
+                    ]
+                  }
+                }
+              ],
+              "ruleName": "Run sequentially"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Human Decision",
+      "entryConditions": [
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Integration Error Recovery"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Appeal / Reopen"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Withdrawn Case"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Duplicate Case"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "SLA Escalation"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Credit Bureau Impact Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Compliance / AML Referral"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Manager Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Vulnerable Customer Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Fraud Hold"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Human Decision\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Pending Customer Information"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "entryConditionType": "StagesCompleted",
+          "parameters": {
+            "stageNames": [
+              "Parallel Servicing / Fraud Investigation"
+            ]
+          },
+          "ruleName": "Parallel investigation branch completed"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Generate decision pack",
+              "Post human decision callback"
+            ]
+          },
+          "ruleName": "Required tasks completed"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Generate decision pack",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Human Decision"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        },
+        {
+          "name": "Post human decision callback",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "operator": "AND",
+              "conditions": [
+                {
+                  "entryConditionType": "StageEntered",
+                  "parameters": {
+                    "stageNames": [
+                      "Human Decision"
+                    ]
+                  }
+                },
+                {
+                  "entryConditionType": "TasksCompleted",
+                  "parameters": {
+                    "taskNames": [
+                      "Generate decision pack"
+                    ]
+                  }
+                }
+              ],
+              "ruleName": "Run sequentially"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Parallel Servicing / Fraud Investigation",
+      "entryConditions": [
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Integration Error Recovery"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Appeal / Reopen"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Withdrawn Case"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Duplicate Case"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "SLA Escalation"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Credit Bureau Impact Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Compliance / AML Referral"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Manager Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Vulnerable Customer Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Fraud Hold"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Parallel Servicing / Fraud Investigation\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Pending Customer Information"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "entryConditionType": "StagesCompleted",
+          "parameters": {
+            "stageNames": [
+              "Eligibility and Policy Triage"
+            ]
+          },
+          "ruleName": "Policy triage completed"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Run servicing investigation mock",
+              "Run Servicing Investigation Agent",
+              "Run Fraud Pattern Agent",
+              "Post investigation callback"
+            ]
+          },
+          "ruleName": "Required tasks completed"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Run servicing investigation mock",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Parallel Servicing / Fraud Investigation"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        },
+        {
+          "name": "Run Servicing Investigation Agent",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "operator": "AND",
+              "conditions": [
+                {
+                  "entryConditionType": "StageEntered",
+                  "parameters": {
+                    "stageNames": [
+                      "Parallel Servicing / Fraud Investigation"
+                    ]
+                  }
+                },
+                {
+                  "entryConditionType": "TasksCompleted",
+                  "parameters": {
+                    "taskNames": [
+                      "Run servicing investigation mock"
+                    ]
+                  }
+                }
+              ],
+              "ruleName": "Run sequentially"
+            }
+          ]
+        },
+        {
+          "name": "Run Fraud Pattern Agent",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "operator": "AND",
+              "conditions": [
+                {
+                  "entryConditionType": "StageEntered",
+                  "parameters": {
+                    "stageNames": [
+                      "Parallel Servicing / Fraud Investigation"
+                    ]
+                  }
+                },
+                {
+                  "entryConditionType": "TasksCompleted",
+                  "parameters": {
+                    "taskNames": [
+                      "Run servicing investigation mock"
+                    ]
+                  }
+                }
+              ],
+              "ruleName": "Run sequentially"
+            }
+          ]
+        },
+        {
+          "name": "Post investigation callback",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "operator": "AND",
+              "conditions": [
+                {
+                  "entryConditionType": "StageEntered",
+                  "parameters": {
+                    "stageNames": [
+                      "Parallel Servicing / Fraud Investigation"
+                    ]
+                  }
+                },
+                {
+                  "entryConditionType": "TasksCompleted",
+                  "parameters": {
+                    "taskNames": [
+                      "Run Servicing Investigation Agent",
+                      "Run Fraud Pattern Agent"
+                    ]
+                  }
+                }
+              ],
+              "ruleName": "Run sequentially"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Evidence Collection",
+      "entryConditions": [
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Integration Error Recovery"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Appeal / Reopen"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Withdrawn Case"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Duplicate Case"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "SLA Escalation"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Credit Bureau Impact Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Compliance / AML Referral"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Manager Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Vulnerable Customer Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Fraud Hold"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Evidence Collection\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Pending Customer Information"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "entryConditionType": "StagesCompleted",
+          "parameters": {
+            "stageNames": [
+              "Eligibility and Policy Triage"
+            ]
+          },
+          "ruleName": "Policy triage completed"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Run Evidence Sufficiency Agent",
+              "Post evidence status callback"
+            ]
+          },
+          "ruleName": "Required tasks completed"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Run Evidence Sufficiency Agent",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Evidence Collection"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        },
+        {
+          "name": "Post evidence status callback",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "operator": "AND",
+              "conditions": [
+                {
+                  "entryConditionType": "StageEntered",
+                  "parameters": {
+                    "stageNames": [
+                      "Evidence Collection"
+                    ]
+                  }
+                },
+                {
+                  "entryConditionType": "TasksCompleted",
+                  "parameters": {
+                    "taskNames": [
+                      "Run Evidence Sufficiency Agent"
+                    ]
+                  }
+                }
+              ],
+              "ruleName": "Run sequentially"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eligibility and Policy Triage",
+      "entryConditions": [
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Integration Error Recovery"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Appeal / Reopen"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Withdrawn Case"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Duplicate Case"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "SLA Escalation"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Credit Bureau Impact Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Compliance / AML Referral"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Manager Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Vulnerable Customer Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Fraud Hold"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Eligibility and Policy Triage\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Pending Customer Information"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "entryConditionType": "StagesCompleted",
+          "parameters": {
+            "stageNames": [
+              "Loan Context Retrieval"
+            ]
+          },
+          "ruleName": "Previous primary stage completed"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Run Loan Policy Triage Agent",
+              "Recommend next case action",
+              "Post policy triage callback"
+            ]
+          },
+          "ruleName": "Required tasks completed"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Run Loan Policy Triage Agent",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Eligibility and Policy Triage"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        },
+        {
+          "name": "Recommend next case action",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "operator": "AND",
+              "conditions": [
+                {
+                  "entryConditionType": "StageEntered",
+                  "parameters": {
+                    "stageNames": [
+                      "Eligibility and Policy Triage"
+                    ]
+                  }
+                },
+                {
+                  "entryConditionType": "TasksCompleted",
+                  "parameters": {
+                    "taskNames": [
+                      "Run Loan Policy Triage Agent"
+                    ]
+                  }
+                }
+              ],
+              "ruleName": "Run sequentially"
+            }
+          ]
+        },
+        {
+          "name": "Post policy triage callback",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "operator": "AND",
+              "conditions": [
+                {
+                  "entryConditionType": "StageEntered",
+                  "parameters": {
+                    "stageNames": [
+                      "Eligibility and Policy Triage"
+                    ]
+                  }
+                },
+                {
+                  "entryConditionType": "TasksCompleted",
+                  "parameters": {
+                    "taskNames": [
+                      "Recommend next case action"
+                    ]
+                  }
+                }
+              ],
+              "ruleName": "Run sequentially"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Loan Context Retrieval",
+      "entryConditions": [
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Integration Error Recovery"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Appeal / Reopen"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Withdrawn Case"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Duplicate Case"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "SLA Escalation"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Credit Bureau Impact Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Compliance / AML Referral"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Manager Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Vulnerable Customer Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Fraud Hold"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Loan Context Retrieval\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Pending Customer Information"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "entryConditionType": "StagesCompleted",
+          "parameters": {
+            "stageNames": [
+              "Demo Intake"
+            ]
+          },
+          "ruleName": "Previous primary stage completed"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Get portal case context",
+              "Retrieve synthetic payment history",
+              "Retrieve synthetic customer profile",
+              "Post context retrieved callback"
+            ]
+          },
+          "ruleName": "Required tasks completed"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Get portal case context",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Loan Context Retrieval"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        },
+        {
+          "name": "Retrieve synthetic payment history",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "operator": "AND",
+              "conditions": [
+                {
+                  "entryConditionType": "StageEntered",
+                  "parameters": {
+                    "stageNames": [
+                      "Loan Context Retrieval"
+                    ]
+                  }
+                },
+                {
+                  "entryConditionType": "TasksCompleted",
+                  "parameters": {
+                    "taskNames": [
+                      "Get portal case context"
+                    ]
+                  }
+                }
+              ],
+              "ruleName": "Run sequentially"
+            }
+          ]
+        },
+        {
+          "name": "Retrieve synthetic customer profile",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "operator": "AND",
+              "conditions": [
+                {
+                  "entryConditionType": "StageEntered",
+                  "parameters": {
+                    "stageNames": [
+                      "Loan Context Retrieval"
+                    ]
+                  }
+                },
+                {
+                  "entryConditionType": "TasksCompleted",
+                  "parameters": {
+                    "taskNames": [
+                      "Get portal case context"
+                    ]
+                  }
+                }
+              ],
+              "ruleName": "Run sequentially"
+            }
+          ]
+        },
+        {
+          "name": "Post context retrieved callback",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "operator": "AND",
+              "conditions": [
+                {
+                  "entryConditionType": "StageEntered",
+                  "parameters": {
+                    "stageNames": [
+                      "Loan Context Retrieval"
+                    ]
+                  }
+                },
+                {
+                  "entryConditionType": "TasksCompleted",
+                  "parameters": {
+                    "taskNames": [
+                      "Retrieve synthetic payment history",
+                      "Retrieve synthetic customer profile"
+                    ]
+                  }
+                }
+              ],
+              "ruleName": "Run sequentially"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Demo Intake",
+      "entryConditions": [
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Integration Error Recovery"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Appeal / Reopen"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Withdrawn Case"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Duplicate Case"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "SLA Escalation"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Credit Bureau Impact Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Compliance / AML Referral"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Manager Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Vulnerable Customer Review"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Fraud Hold"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "operator": "AND",
+          "conditions": [
+            {
+              "entryConditionType": "Expression",
+              "parameters": {
+                "expression": "=js:(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))",
+                "expressionString": "(vars.MainEventSubprocessLocalLastPrimaryStageExited != null && vars.MainEventSubprocessLocalLastPrimaryStageExited.length > 0 && vars.MainEventSubprocessLocalLastPrimaryStageExited.some((stage) => stage == \"Demo Intake\"))"
+              }
+            },
+            {
+              "entryConditionType": "StagesCompleted",
+              "parameters": {
+                "stageNames": [
+                  "Pending Customer Information"
+                ]
+              }
+            }
+          ],
+          "ruleName": "Required tasks completed"
+        },
+        {
+          "entryConditionType": "CaseEntered",
+          "parameters": {},
+          "ruleName": "Case entered"
+        }
+      ],
+      "exitConditions": [],
+      "completionConditions": [
+        {
+          "completionConditionType": "TasksCompleted",
+          "parameters": {
+            "taskNames": [
+              "Load demo intake and correlate case",
+              "Run Intake Classification Agent",
+              "Post case.created callback"
+            ]
+          },
+          "ruleName": "Required tasks completed"
+        }
+      ],
+      "tasks": [
+        {
+          "name": "Load demo intake and correlate case",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "entryConditionType": "StageEntered",
+              "parameters": {
+                "stageNames": [
+                  "Demo Intake"
+                ]
+              },
+              "ruleName": "Run sequentially"
+            }
+          ]
+        },
+        {
+          "name": "Run Intake Classification Agent",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "operator": "AND",
+              "conditions": [
+                {
+                  "entryConditionType": "StageEntered",
+                  "parameters": {
+                    "stageNames": [
+                      "Demo Intake"
+                    ]
+                  }
+                },
+                {
+                  "entryConditionType": "TasksCompleted",
+                  "parameters": {
+                    "taskNames": [
+                      "Load demo intake and correlate case"
+                    ]
+                  }
+                }
+              ],
+              "ruleName": "Run sequentially"
+            }
+          ]
+        },
+        {
+          "name": "Post case.created callback",
+          "runOnlyOnce": false,
+          "entryConditions": [
+            {
+              "operator": "AND",
+              "conditions": [
+                {
+                  "entryConditionType": "StageEntered",
+                  "parameters": {
+                    "stageNames": [
+                      "Demo Intake"
+                    ]
+                  }
+                },
+                {
+                  "entryConditionType": "TasksCompleted",
+                  "parameters": {
+                    "taskNames": [
+                      "Run Intake Classification Agent"
+                    ]
+                  }
+                }
+              ],
+              "ruleName": "Run sequentially"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "version": 1
+}
