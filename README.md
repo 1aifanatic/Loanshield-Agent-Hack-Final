@@ -16,6 +16,10 @@ uipath-maestro/
 
 LoanShield uses UiPath Maestro, AI agents, Action Center, and a live web portal to resolve loan disputes end to end with evidence triage, human approval, notifications, and case updates.
 
+## Built With Codex
+
+This hackathon project was designed, implemented, tested, documented, and packaged with the help of OpenAI Codex as the coding and automation build partner.
+
 ## What The Demo Shows
 
 Loan disputes often require several teams to coordinate: intake, loan context lookup, policy triage, evidence review, servicing investigation, fraud checks, human approval, settlement, customer communication, and audit closure. LoanShield turns that messy workflow into a visible case journey.
